@@ -74,7 +74,6 @@ namespace TrainingDotnetVue1
             Console.Write("Nhập lựa chọn của bạn: ");
         }
 
-        // Hàm generic để hiển thị danh sách công việc
         static void PrintTasks<T>(IEnumerable<T> tasks, string title) where T : TaskItem
         {
             Console.WriteLine($"\n{title}");
@@ -86,13 +85,11 @@ namespace TrainingDotnetVue1
                 return;
             }
 
-            // In tiêu đề cột
             Console.WriteLine($"{"ID",-5} {"Tiêu đề",-40} {"Deadline",-22} {"Ưu tiên",-10} {"Trạng thái"}");
             Console.WriteLine(new string('=', 100));
 
             foreach (var task in tasks)
             {
-                // GetTaskStatus là static nên có thể gọi trực tiếp từ class
                 var status = GetTaskStatus(task);
                 var statusText = GetStatusDisplayText(status);
                 var priorityText = task.Priority.ToString();
@@ -133,7 +130,6 @@ namespace TrainingDotnetVue1
             _ => ConsoleColor.Gray
         };
 
-        // Tất cả các hàm helper giờ đây nhận ITaskService làm tham số
         static async Task DisplayAllTasks(ITaskService taskService)
         {
             var allTasks = await taskService.GetTasksAsync();
