@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingDotnetVue1", "TrainingDotnetVue1\TrainingDotnetVue1.csproj", "{E60ED43F-DBE3-4148-B90C-06C43CAD8617}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingDotnetAPI", "TrainingDotnetAPI\TrainingDotnetAPI.csproj", "{6BB8F0E9-0AB0-4CCA-B1C2-216A49C2F581}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E60ED43F-DBE3-4148-B90C-06C43CAD8617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E60ED43F-DBE3-4148-B90C-06C43CAD8617}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E60ED43F-DBE3-4148-B90C-06C43CAD8617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB8F0E9-0AB0-4CCA-B1C2-216A49C2F581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB8F0E9-0AB0-4CCA-B1C2-216A49C2F581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB8F0E9-0AB0-4CCA-B1C2-216A49C2F581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB8F0E9-0AB0-4CCA-B1C2-216A49C2F581}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
