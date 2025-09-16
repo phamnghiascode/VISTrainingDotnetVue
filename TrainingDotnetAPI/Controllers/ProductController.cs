@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrainingDotnetAPI.DTOs;
 using TrainingDotnetAPI.Models;
 using TrainingDotnetAPI.Services.Interface;
@@ -7,6 +8,7 @@ namespace TrainingDotnetAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly ILogger<ProductController> logger;
@@ -35,6 +37,7 @@ namespace TrainingDotnetAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ProductDto>> CreateProduct(UpsertProductDto product)
         {
             try
@@ -49,7 +52,8 @@ namespace TrainingDotnetAPI.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
             try
@@ -68,7 +72,8 @@ namespace TrainingDotnetAPI.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> UpdateProduct(int id, UpsertProductDto createProductDto)
         {
             try
@@ -88,6 +93,7 @@ namespace TrainingDotnetAPI.Controllers
         }
 
         [HttpPost("batch")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<ProductDto>>> CreateManyProducts([FromBody] IEnumerable<UpsertProductDto> createDtos)
         {
             try

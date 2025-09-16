@@ -10,9 +10,11 @@ namespace TrainingDotnetAPI.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddLogging();
 
             #region Service
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ITokenService, TokenService>();  
             #endregion
 
             #region Repository
