@@ -17,13 +17,15 @@ namespace TrainingDotnetAPI.Services.Implement
         }
 
         private readonly SymmetricSecurityKey key;
-        public string CreateToken(AppUser username)
+        public string CreateToken(AppUser username, IList<string> roles)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, username.Id),
                 new Claim(JwtRegisteredClaimNames.UniqueName, username.UserName)
             };
+
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 

@@ -33,6 +33,7 @@ namespace TrainingDotnetAPI.Controllers
                 UserName = registerDto.Username.ToLower(),
                 Email = registerDto.Email,
             };
+            var role = await userManager.GetRolesAsync(user);
 
             IdentityResult result = await userManager.CreateAsync(user, registerDto.Password);
 
@@ -44,7 +45,7 @@ namespace TrainingDotnetAPI.Controllers
             return new UserDto
             {
                 Username = user.UserName,
-                Token = tokenService.CreateToken(user)
+                Token = tokenService.CreateToken(user, role)
             };
         }
 
@@ -58,10 +59,11 @@ namespace TrainingDotnetAPI.Controllers
                 return Unauthorized("Invalid username or password");
             }
 
+            var role = await userManager.GetRolesAsync(user);
             return new UserDto
             {
                 Username = user.UserName!,
-                Token = tokenService.CreateToken(user)
+                Token = tokenService.CreateToken(user, role)
             };
         }
     }
